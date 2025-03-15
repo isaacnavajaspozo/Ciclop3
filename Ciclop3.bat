@@ -60,13 +60,13 @@ echo 1. Run Windows Defender      :: Analizar el sistema en busca de actividades
 echo 2. Run MRT                   :: Eliminar software malicioso de sistemas operativos Windows.
 echo 3. Run SFC                   :: Escanea y repara archivos que pueden estar dañados o faltantes.
 echo 4. Run DISM                  :: Mantiene y repara imágenes de Windows.
-echo 5. Windows Key               :: Obtener clave del sistema.
-echo 6. Suspicious Processes      :: Identificación de procesos sospechosos en el sistema.
-echo 7. Nwtworking Connect        :: Monitorear conexiones de red activas.
-echo 8. Disk Usage                :: Evaluar el uso del disco.
-echo 9. Remove tmp                :: Eliminar archivos temporales.
-echo 10. Run Ciclop3              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
-echo 11. Exit                     :: Salir de la aplicación.
+echo 5. Windows Key               :: Obtener clave del sistema instalada.
+echo 6. Suspicious Processes      :: Identificación de procesos sospechosos en el sistema
+echo 7. Nwtworking Connect        :: Monitorear conexiones de red activas
+echo 8. Disk Usage                :: Evaluar el uso del disco
+echo 9. Remove tmp                :: Eliminar archivos temporales
+echo 10. Run Ciclop3              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión
+echo 11. Exit                     :: Salir de la aplicación
 echo ===================================================================================
 set /p option=Selecciona una opcion (1-11): 
 
