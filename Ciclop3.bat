@@ -65,7 +65,7 @@ echo 6. Suspicious Processes      :: Identificación de procesos sospechosos en 
 echo 7. Nwtworking Connect        :: Monitorear conexiones de red activas
 echo 8. Disk Usage                :: Evaluar el uso del disco
 echo 9. Remove tmp                :: Eliminar archivos temporales
-echo 10. Run Ciclop3              :: Genera un archivo Ciclop3.txt en el escritorio con los últimos 10 eventos de inicio de sesión exitosos
+echo 10. Run Ciclop3              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión
 echo 11. Exit                     :: Salir de la aplicación
 echo ===================================================================================
 set /p option=Selecciona una opcion (1-11): 
