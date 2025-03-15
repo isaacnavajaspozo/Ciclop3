@@ -6,52 +6,13 @@ chcp 65001 >nul
 
 :: Establecer tamaño de la consola al máximo posible
 :menu
-cls
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMWWXKOkxddooooooddxkO0KNWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMWX0kolc::;;;::;;;;;;;;::cloxOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMWN0dl:;:;;:;;;;;;;;;;;;;;;;;;;;:clxOXWWMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMWXko::;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;:cdOXWMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMWNOl:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;::;;;:lkKWMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMWKd:;:;;;;;::;:;;;;;;;;;;;;;;;;;;;;;;;::;;;:;:lkXWMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMW0o:;;;;;;;;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;;:lONMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMWKo:;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;cxXWMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMXd:;:;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:dXWMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMWOc::;:;;;;;;;;;;;;:;;;:;;;;;;;;;;;;;;;;;;;;:;;:;;;;;;:xNMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMNd:;;;;;;;;;;;;;;;::;;;;;:;;:;;;::;;;;;;;;;;;;;;;;;;:;:l0WMMMMMMMMMMMM
-echo "MMMMMMMMMMMWKo;;;;;;;;;;;;;;;;;;;;;;;;;:;::;;;:;::;;;::;;;llc::;;;;;dKNMMMMMMMMMMM
-echo "MMMMMMMMMMMWKo;;;;;;;;;;;;;;;;;;;;;;;;;;;:cc:;;;;;;:;;;;;;llc::;;;;;;XMMMMMMMMMMMM
-echo "MMMMMMMMMMMMXo:;:;;;;;;;;;;;;;;;;;;;;;;;;::l1;;;;;;;;;::;:lol:;::;;;cxNMMMMMMMMMMM
-echo "MMMMMMMMMMMMNx:;;;;::;;;;;;;;;;;;;;;;;;;::;col::;:;;;::lokXNKd::;;;c:oKMMMMMMMMMMM
-echo "MMMMMMMMMMMMW0l:;;;;;;;;;;;;;;;;;;;;;;;;;:;:loc:;;;;:;;oKWWMNx;:;;::oKWMMMMMMMMMMM
-echo "MMMMMMMMMMMMMNkc;;::;;;;;;;;;;;;;;;;;;;;;;;::ox;;;;;:;;oXWWMMNx:;;;::dXMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMNkc;;::;;;;;;;;;;;;;;;;;;;:;;:;:;;;;;;;;:cOXWMMWO:;:;;:kNMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMNkc:::;;;;;;;;;;;;;;;;;;;;;:::;;;;;:c:;:dXWMMW0l::;;;;cOWMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMW0dc::::;;cl:;;:;;;;;;;;;;;;;;;;:;:::;:oXWWMMNO;;;;;l0WMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMN0o:;;;;col:::;::;;;;;;;;;;;;;;;;;::;cOXWMMWx;;;;;l0WMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMWNOoc:;:lxo:;;:c:;;;;;;;;;;;;;;;;;;;oKWWWKox:;;;;lKWMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMWN0occ:dOxl:ll::;;;;;;;;;;;;;;;;;:xNWWWOl:;;dc:dXMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMNkodlcxXX00d:;;;;;;;;;;;;;;;;;;:kNWWWOl:;;ccdKWMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMWNOoc:oXWWNk:;;;;;;;;;;;;;;;;;;:oOKK0xl:;;cxx0NWMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMNkc:xNMMWKd::::ccccoxO0Oxl::;:xKOkKOl:;lKWWMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMNx:l0WMMMWN0xddddk0NWMWNxlc::::cc:cl::;lKMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMW0lcONMMMMMMMWWWWWMMMMMWKo:;:c:;:::;cl:oKMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMWOcl0WMMMMMMMMMMMMMMMMMWkc;;coc;:ll:odoONMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMWKocxXWMMMMMMMMMMMMMMMMW0dlokdc:oxod0XNWMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMWKdlok0KNWWMMMMMMMMMMMMWNXNWX0KNNNWWMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMWKOdollokKKO0KXWWWWNX0dkXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKOdlll::cdxdkOdodloKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWKxc:::cc:clccdkKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNkc;;;;;:::dKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dooodoldKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWWWNXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-echo "          _________ .__       .__               ________  
-echo "          \_   ___ \|__| ____ |  |   ____ ______\_____  \ 
-echo "          /    \  \/|  |/ ___\|  |  /  _ \\____ \ _(__  < 
-echo "          \     \___|  \  \___|  |_(  <_> )  |_> >       \
-echo "           \______  /__|\___  >____/\____/|   __/______  /
-echo "                  \/        \/            |__|         \/ 
+cls   
+echo "     _________ .__       .__               ________
+echo "     \_   ___ \|__| ____ |  |   ____ ______\_____  \
+echo "     /    \  \/|  |/ ___\|  |  /  _ \\____ \ _(__  < 
+echo "     \     \___|  \  \___|  |_(  <_> )  |_> >       \
+echo "      \______  /__|\___  >____/\____/|   __/______  /
+echo "             \/        \/            |__|         \/ 
 echo ===================================================================================
 echo    Mantenimiento de Seguridad
 echo ===================================================================================
