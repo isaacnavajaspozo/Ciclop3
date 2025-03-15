@@ -1,3 +1,11 @@
+### Para su ejecución sigue los siguientes pasos:
+
+✅ Copia el código del archivo Ciclop3.bat de GitHub
+
+✅ Crea un archivo, pega el código y cambia su extensión a .bat
+
+⚠️ No descargues directamente el archio de GitHub
+          
           _________ .__       .__               ________
           \_   ___ \|__| ____ |  |   ____ ______\_____  \
           /    \  \/|  |/ ___\|  |  /  _ \\____ \ _(__  <
