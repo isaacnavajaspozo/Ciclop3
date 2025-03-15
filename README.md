@@ -1,6 +1,6 @@
 ### Para su ejecución sigue los siguientes pasos:
 
-✅ Instala el script a través del ejecutable .exe
+✅ Instala el script a través del ejecutable .exe o copia el código de Ciclop3.bat de GitHub, pegalo en un archivo de tu equipo y cambia su extensión por .bat.
 
 ⚠️ No descargues directamente el archio .bat de GitHub
           
