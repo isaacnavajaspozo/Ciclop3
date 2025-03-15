@@ -4,25 +4,18 @@
           \     \___|  \  \___|  |_(  <_> )  |_> >       \
            \______  /__|\___  >____/\____/|   __/______  /
                   \/        \/            |__|         \/
-
-#### Ciclop3 es un batchscripts orientado para la seguridad en Windows. 
-
-✅ Windows Defender
-
-✅ MRT
-
-✅ SFC
-
-✅ DISM
-
-✅ WINDOWS KEY
-
-✅ Procesos
-
-✅ Conexiones de red
-
-✅ Uso del disco
-
-✅ Archivos temp
-
-✅ Ciclop3.txt
+                  
+    ==============================================================================
+        Mantenimiento de Seguridad
+    ===================================================================================
+    1. Run Windows Defender      :: Analizar el sistema en busca de actividades sospechosas.
+    2. Run MRT                   :: Eliminar software malicioso de sistemas operativos Windows.
+    3. Run SFC                   :: Escanea y repara archivos que pueden estar dañados o faltantes.
+    4. Run DISM                  :: Mantiene y repara imágenes de Windows.
+    5. Windows Key               :: Obtener clave del sistema instalada.
+    6. Suspicious Processes      :: Identificación de procesos sospechosos en el sistema
+    7. Nwtworking Connect        :: Monitorear conexiones de red activas
+    8. Disk Usage                :: Evaluar el uso del disco
+    9. Remove tmp                :: Eliminar archivos temporales
+    10. Run Ciclop3              :: Genera un archivo Ciclop3.txt en el escritorio con los últimos 10 eventos de inicio de sesión exitosos
+    11. Exit                     :: Salir de la aplicación
