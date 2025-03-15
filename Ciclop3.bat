@@ -76,7 +76,7 @@ if "%option%"=="4" goto dism
 if "%option%"=="5" goto getkey
 if "%option%"=="6" goto procesos
 if "%option%"=="7" goto conexiones
-if "%option%"=="8" goto diskusage<
+if "%option%"=="8" goto diskusage
 if "%option%"=="9" goto cleantemp
 if "%option%"=="10" goto logactivity
 if "%option%"=="11" exit
@@ -247,7 +247,7 @@ goto menu
 @echo off
 
 :: Definir el archivo de registro
-set logFile=%USERPROFILE%\Desktop\Ciclop3_Security_Log.txt
+set logFile=%USERPROFILE%\Desktop\Ciclop3.txt
 
 :: Verificar si el archivo de registro existe, si no, crearlo
 if not exist "%logFile%" (
