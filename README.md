@@ -17,5 +17,5 @@
     7. Nwtworking Connect        :: Monitorear conexiones de red activas
     8. Disk Usage                :: Evaluar el uso del disco
     9. Remove tmp                :: Eliminar archivos temporales
-    10. Run Ciclop3              :: Genera un archivo Ciclop3.txt en el escritorio con los últimos 10 eventos de inicio de sesión exitosos
+    10. Run Ciclop3              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión
     11. Exit                     :: Salir de la aplicación
