@@ -7,12 +7,12 @@ chcp 65001 >nul
 :: Establecer tamaño de la consola al máximo posible
 :menu
 cls   
-echo "     _________ .__       .__               ________
-echo "     \_   ___ \|__| ____ |  |   ____ ______\_____  \
-echo "     /    \  \/|  |/ ___\|  |  /  _ \\____ \ _(__  < 
-echo "     \     \___|  \  \___|  |_(  <_> )  |_> >       \
-echo "      \______  /__|\___  >____/\____/|   __/______  /
-echo "             \/        \/            |__|         \/ 
+echo "     _________ .__       .__                ________
+echo "     \_   ___ \|__| ____ |  |   _____ ______\_____  \
+echo "     /    \  \/|  |/ ___\|  |  /  _  \\____ \ _(__  < 
+echo "     \     \___|  \  \___|  |_(  <◕>  ) |_>  >       \
+echo "      \______  /__|\___  >____/\____ /|   __/______  /
+echo "             \/        \/             |__|         \/ 
 echo ===================================================================================
 echo    Mantenimiento de Seguridad
 echo ===================================================================================
@@ -25,7 +25,7 @@ echo 6. Suspicious Processes      :: Identificación de procesos sospechosos en 
 echo 7. Nwtworking Connect        :: Monitorear conexiones de red activas.
 echo 8. Disk Usage                :: Evaluar el uso del disco.
 echo 9. Remove tmp                :: Eliminar archivos temporales.
-echo 10. Run Ciclop3              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
+echo 10. Login Tracker            :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
 echo 11. Exit                     :: Salir de la aplicación.
 echo ===================================================================================
 set /p option=Selecciona una opcion (1-11): 
@@ -39,7 +39,7 @@ if "%option%"=="6" goto procesos
 if "%option%"=="7" goto conexiones
 if "%option%"=="8" goto diskusage
 if "%option%"=="9" goto cleantemp
-if "%option%"=="10" goto logactivity
+if "%option%"=="10" goto logintracker
 if "%option%"=="11" exit
 goto menu
 
@@ -75,39 +75,25 @@ if exist resultados.txt (
 pause
 goto menu
 
+
 :: [MRTACTIVITY]
 :mrtactivity
-
 echo ¿Deseas ejecutar MRT en modo silencioso? (s/n)
 set /p mode="Ingresa tu opción: "
 
-setlocal
-
-:: Crear un archivo de registro para MRT
-set "logFile=%temp%\mrt_log.txt"
-
+:: Ejecutar MRT en segundo plano
 if /i "%mode%"=="s" (
     echo Iniciando el análisis completo con MRT en modo silencioso...
-    :: Ejecutar MRT en modo silencioso
-    mrt.exe /F:Y /S > "%logFile%" 2>&1
+    start "" /b cmd /c "mrt.exe /F:Y /Q"
+    echo Para comprobar los archivos encontrados como sospechosos:: C:\Windows\Debug\mrt.log
 ) else (
     echo Iniciando el análisis completo con MRT...
-    :: Ejecutar MRT sin el modo silencioso para obtener más detalles
-    mrt.exe /F:Y > "%logFile%" 2>&1
+    start "" /b cmd /c "mrt.exe /F:Y"
 )
 
-:: Esperar un momento para asegurarse de que MRT haya comenzado
-timeout /t 5 > nul
+:: Mostrar el contenido del archivo mrt.log
+echo Mostrando los archivos escaneados y las acciones de MRT...
 
-endlocal
-
-pause
-goto menu
-
-:: [DEFENDER]
-:defender
-echo Escaneando con Windows Defender...
-start /wait "" "C:\Program Files\Windows Defender\MpCmdRun.exe" -Scan -ScanType 1
 pause
 goto menu
 
@@ -203,12 +189,12 @@ echo Archivos temporales eliminados.
 pause
 goto menu
 
-:: [LOGACTIVITY]
-:logactivity
+:: [logintracker]
+:logintracker
 @echo off
 
 :: Definir el archivo de registro
-set logFile=%USERPROFILE%\Desktop\Ciclop3.txt
+set logFile=%USERPROFILE%\Desktop\Ciclop3_login_tracker.txt
 
 :: Verificar si el archivo de registro existe, si no, crearlo
 if not exist "%logFile%" (
