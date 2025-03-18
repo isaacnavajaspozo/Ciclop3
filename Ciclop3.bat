@@ -16,21 +16,22 @@ echo "               \/         \/              |__|          \/
 echo ===================================================================================
 echo    Mantenimiento de Seguridad
 echo ===================================================================================
-echo 1.  Run Windows Defender      :: Analizar el sistema en busca de actividades sospechosas.
-echo 2.  Run MRT                   :: Eliminar software malicioso de sistemas operativos Windows.
-echo 3.  Run SFC                   :: Escanea y repara archivos que pueden estar dañados o faltantes.
-echo 4.  Run DISM                  :: Mantiene y repara imágenes de Windows.
-echo 5.  Windows Key               :: Obtener clave del sistema, perfecto para obtener claves OEM.
-echo 6.  Suspicious Processes      :: Identificación de procesos sospechosos en el sistema.
-echo 7.  Nwtworking Connect        :: Monitorear conexiones de red activas.
-echo 8.  Disk Usage                :: Evaluar el uso del disco.
-echo 9.  Remove tmp                :: Eliminar archivos temporales.
-echo 10. Login Tracker             :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
-echo 11. Change Networking         :: Cambiar la configuración del tipo de red.
-echo 12. MAS ~ [GitHub]            :: Script para activar claves de Windows (recomendado solo para laboratoríos).
-echo 13. Exit                      :: Salir de la aplicación.
+echo 1.  Run Windows Defender       :: Analizar el sistema en busca de actividades sospechosas.
+echo 2.  Run MRT                    :: Eliminar software malicioso de sistemas operativos Windows.
+echo 3.  Run SFC                    :: Escanea y repara archivos que pueden estar dañados o faltantes.
+echo 4.  Run DISM                   :: Mantiene y repara imágenes de Windows.
+echo 5.  Windows Key                :: Obtener clave del sistema, perfecto para obtener claves OEM.
+echo 6.  Suspicious Processes       :: Identificación de procesos sospechosos en el sistema.
+echo 7.  Nwtworking Connect         :: Monitorear conexiones de red activas.
+echo 8.  Disk Usage                 :: Evaluar el uso del disco.
+echo 9.  Remove tmp                 :: Eliminar archivos temporales.
+echo 10. Login Tracker              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
+echo 11. Change Networking          :: Cambiar la configuración del tipo de red.
+echo 12. MAS ~ [GitHub]             :: Script para activar claves de Windows (recomendado solo para laboratoríos).
+echo 13. Manual de recomendaciones  :: Enumera reglas de acción para una ciberseguridad útil en Windows.
+echo 14. Exit                       :: Salir de la aplicación.
 echo ===================================================================================
-set /p option=Selecciona una opcion (1-12): 
+set /p option=Selecciona una opcion (1-14): 
 
 if "%option%"=="1" goto scan
 if "%option%"=="2" goto mrtactivity
@@ -44,7 +45,8 @@ if "%option%"=="9" goto cleantemp
 if "%option%"=="10" goto logintracker
 if "%option%"=="11" goto changenetworking
 if "%option%"=="12" goto mas
-if "%option%"=="13" exit
+if "%option%"=="13" goto manual
+if "%option%"=="14" exit
 goto menu
 
 :: [SCAN]
@@ -144,7 +146,7 @@ echo 🕵️‍♂️ Procesos en ejecución:
 echo ==================================================================================
 tasklist /v | findstr /i "exe"
 echo ==================================================================================
-echo 🔎 Si ves nombres extraños, investígalos en Google.
+echo 🔎 Si ves nombres extraños, investígalos en DuckDuckGo.
 pause
 goto menu
 
@@ -220,11 +222,8 @@ for /L %%i in (1,1,5) do (
     call :LogSecurityEvents %%i
 )
 
-:: Mensaje final y espera para cerrar
-echo Eventos de seguridad registrados en el archivo: %logFile%
-
 :: Obtener los últimos 10 eventos de seguridad (ID de evento 4624 -> Inicio de sesión exitoso)
-echo Registrando eventos de seguridad en el archivo %logFile%...
+echo Registrando eventos de seguridad en el archivo: %logFile%
 wevtutil qe Security "/q:*[System[(EventID=4624)]]" /f:text /c:10 >> "%logFile%"
 echo Evento(s) registrado(s) exitosamente.
 
@@ -369,9 +368,9 @@ goto menu
 echo ⚠️ Tienes que saber que instalaciones de este tipo que usan KMS para activar Windows son ilegales.
 echo ⚠️ En este script la opción (MAS) es solo para trabajar en entornos de laboratorío controlados.
 echo ⚠️ Instalar claves de Windows de sitios no-oficiales puede descargar y ejecutar contenido malicioso.
-echo 🔔 Consigue una licencia OEM (vinculadas al hardware), suelen ser economicas y seguras.
+echo 🔔 Considera comprar una licencia OEM (vinculadas al hardware), suelen ser economicas y seguras.
 echo 🔔 Comprueba antes la opción (5. Windows Key) para conservar tu clave actual.
-echo .
+echo.
 set /p decision_licencia="🦧 ¿Quieres comprobar la validez de tu licencia? (s/n): "
 if /i "%decision_licencia%"=="s" (
     echo Comprobando la licencia...
@@ -380,7 +379,7 @@ if /i "%decision_licencia%"=="s" (
     echo Operación cancelada.
 )
 
-echo .
+echo.
 echo ⚠️ Microsoft-Activation-Scripts::
 echo 😺 https://github.com/massgravel/Microsoft-Activation-Scripts
 set /p decision="¿Quieres descargar y ejecutar el activador de Windows? (s/n): "
@@ -392,6 +391,84 @@ if /i "%decision%"=="s" (
     echo Operación cancelada.
 )
 
-echo Operacion terminada.
+pause
+goto menu
+
+:: [manual]
+:manual
+@echo off
+@echo off
+cls
+echo =========================================
+echo        📂 Manula virtual Ciclop3
+echo =========================================
+echo.
+echo 📑 Recomendaciones para garantizar una óptima seguridad en Windows.
+echo.
+echo.
+echo 🔥 Configuración por defecto::
+echo *****************************************
+echo.
+echo [🔐 RDP]:
+echo 📌 "Configuración > Sistema > Escritorio remoto > Desactivar"
+echo.
+echo [🔐 Pantalla de bloqueo]:
+echo 📌 "Configuración > Personalización  > Pantalla de bloqueo >> Mostrar detalles de estado en la pantalla de bloqueo > Desactivar "
+echo.
+echo [🔐 UAC]:
+echo 📌 "Cambiar configuración de Control de cuentas de usuario > ajústalo al máximo"
+echo.
+echo [🔐 Deshabilitar el uso compartido de archivos]:
+echo 📌 "Panel de control > Centro de redes y recursos compartidos > Configuración avanzada de uso compartido > desactiva el uso compartido de archivos e impresoras"
+echo.
+echo [🔐 Permisos de aplicaciones]:
+echo 📌 "Configuración > Privacidad y seguridad >  Permisos de Windows > revisar aplicaciones que tiengan acceso a la cámara, el micrófono, la ubicación..."
+echo.
+echo.
+echo 🔥 Mejoras para mayor seguridad::
+echo *****************************************
+echo.
+echo [🔐 Windows Defender]:
+echo 📌 "Windows Defender > Activado"
+echo 📌 "aislamiento del núcleo en Seguridad de Windows > Seguridad del dispositivo."
+echo.
+echo [🔐 Windows Defender]:
+echo 📌 "Seguridad de Windows > Protección antivirus y contra amenazas > Protección en tiempo real > Activado"
+echo 📌 "Seguridad de Windows > Control de aplicaciones y navegador > Protección basada en reputación > Activar"
+echo 📌 "Seguridad de Windows > Seguridad del dispositivo > Integridad de memoria > Activado"
+echo.
+echo [🔐 Windows Update]:
+echo 📌 "Configuración  > Windows Update > asegúrate de que las actualizaciones automáticas están activadas."
+echo.
+echo [🔐 Servicios]:
+echo 📌 "services.msc > Desactiva servicios que no uses."
+echo.
+echo [🔐 Evitar ancho de banda]:
+echo 📌 "Configuración  > Windows Update > Opciones avanzadas > Optimización de entrega > Permitir descargas desde otros PC >> Desactiva"
+echo.
+echo [🔐 Usuario sin privilegios]:
+echo 📌 "Crea una cuenta estándar para uso diario y usa la de administrador solo cuando sea necesario."
+echo.
+echo [🔐 Activar BitLocker]:
+echo 📌 "Panel de control > Cifrado de unidad BitLocker"
+echo.
+echo [🔐 Deshabilitar macros en Office]:
+echo 📌 "Archivo  > Opciones  > Centro de confianza > Configuración de macros >> Deshabilitar macros con notificación"
+echo.
+echo [🔐 Administrador de contraseñas]:
+echo 📌 "Usa contraseñas largas y únicas para cada servicio."
+echo 📌 "Utiliza KeePass o KeePassXC para tener acceso a claves 2FA y guarda su base de datos en el OneDrive una cuenta exclusiva "
+echo.
+echo [🔐 Administrador de contraseñas]:
+echo 📌 "Usa contraseñas largas y únicas para cada servicio."
+echo 📌 "Activa 2FA en tu cuenta de Microssoft."
+echo 📌 "Utiliza KeePass o KeePassXC para tener acceso a claves 2FA."
+echo.
+echo [🔑 ¿Donde guardar base de datos del archivo KeePass?]:
+echo 📌 "Guarda el archivo en OneDrive o Google Drive en una cuenta con 2FA."
+echo 📌 "El archivo tiene que estar cifrado con Cryptomator."
+echo 📌 "Puedes utilizar un YubiKey o un Trezor económico en vez de la solución anterior."
+echo.
+echo.
 pause
 goto menu
