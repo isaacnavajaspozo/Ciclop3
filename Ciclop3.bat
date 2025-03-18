@@ -376,19 +376,60 @@ goto menu
 
 
 :: [windowsupdate]
-:changenetworking
+:windowsupdate
 @echo off
 echo Verificando actualizaciones de Windows...
-powershell -command "Get-WindowsUpdate"
+
+:: Comprobar la versión actual de Windows
+echo.
+for /f "tokens=*" %%a in ('wmic os get version') do set version=%%a
+echo Versión actual de Windows: %version%
+
+:: Verificar si hay actualizaciones disponibles
+echo Verificando actualizaciones disponibles...
+wmic qfe list brief /format:table
+
+:: Consultar el historial de actualizaciones
+echo.
+echo Verificando las actualizaciones instaladas:
+wmic /namespace:\\root\cimv2 path Win32_QuickFixEngineering get HotFixID,Description,InstalledOn
+
+:: Verificando si las actualizaciones instaladas son más recientes
+echo.
+echo Verificando si hay actualizaciones pendientes...
+wmic qfe list brief | findstr /i "HotFix" >nul
 if %errorlevel% neq 0 (
-    echo Error detectado. Instalando modulo PSWindowsUpdate...
-    powershell -command "Install-Module PSWindowsUpdate -Force -Scope CurrentUser"
-    echo Instalando actualizaciones...
-    powershell -command "Get-WindowsUpdate -Install -AcceptAll"
-    echo Volviendo a verificar actualizaciones...
-    powershell -command "Get-WindowsUpdate"
+    echo No hay actualizaciones instaladas o disponibles para la versión de tu sistema.
 ) else (
-    echo Actualización completada correctamente.
+    echo Hay actualizaciones instaladas o disponibles para la versión de tu sistema.
+
+setlocal enabledelayedexpansion
+
+echo Verificando la fecha de la última actualización instalada...
+
+:: Obtener la fecha en formato para comparación (yyyyMMdd)
+for /f "tokens=*" %%I in ('powershell -command "Get-WmiObject -Class Win32_QuickFixEngineering | Sort-Object InstalledOn -Descending | Select-Object -First 1 InstalledOn | ForEach-Object { $_.InstalledOn.ToString('yyyyMMdd') }"') do set lastInstalledDateCompare=%%I
+
+:: Obtener la fecha en formato para mostrar (M/d/yyyy)
+for /f "tokens=*" %%I in ('powershell -command "Get-WmiObject -Class Win32_QuickFixEngineering | Sort-Object InstalledOn -Descending | Select-Object -First 1 InstalledOn | ForEach-Object { $_.InstalledOn.ToString('M/d/yyyy') }"') do set lastInstalledDateDisplay=%%I
+
+echo Fecha de la última actualización instalada: !lastInstalledDateDisplay!
+
+:: Verificar las actualizaciones posteriores a la fecha de comparación
+wmic /namespace:\\root\cimv2 path Win32_QuickFixEngineering where "InstalledOn > '!lastInstalledDateCompare!'" get HotFixID, InstalledOn > temp_updates.txt
+
+set updatesAvailable=false
+for /f "skip=1 tokens=*" %%A in (temp_updates.txt) do (
+    set updatesAvailable=true
+)
+
+if !updatesAvailable! == true (
+    echo 🚀 Hay actualizaciones programadas para ser instaladas en el futuro.
+) else (
+    echo 🚀 No hay actualizaciones pendientes por instalar.
+)
+
+del temp_updates.txt
 )
 
 pause
