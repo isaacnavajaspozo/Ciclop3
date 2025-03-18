@@ -47,9 +47,9 @@ if "%option%"=="9" goto cleantemp
 if "%option%"=="10" goto logintracker
 if "%option%"=="11" goto changenetworking
 if "%option%"=="12" goto windowsupdate
-if "%option%"=="12" goto mas
-if "%option%"=="13" goto manual
-if "%option%"=="14" exit
+if "%option%"=="13" goto mas
+if "%option%"=="14" goto manual
+if "%option%"=="15" exit
 goto menu
 
 
