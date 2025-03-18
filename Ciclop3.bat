@@ -4,6 +4,7 @@ color 0A
 setlocal EnableDelayedExpansion
 chcp 65001 >nul
 
+
 :: Establecer tamaño de la consola al máximo posible
 :menu
 cls   
@@ -49,6 +50,7 @@ if "%option%"=="13" goto manual
 if "%option%"=="14" exit
 goto menu
 
+
 :: [SCAN]
 :scan
 echo 📌 "Comprueba:: Seguridad de Windows > Protección antivirus y contra amenazas > Protección en tiempo real > Activado"
@@ -85,7 +87,6 @@ pause
 goto menu
 
 
-
 :: [MRTACTIVITY]
 :mrtactivity
 echo ¿Deseas ejecutar MRT en modo silencioso? (s/n)
@@ -107,6 +108,7 @@ echo Mostrando los archivos escaneados y las acciones de MRT...
 pause
 goto menu
 
+
 :: [SFD]
 :sfc
 echo Ejecutando Comprobador de Archivos de Sistema (SFC)...
@@ -114,12 +116,14 @@ sfc /scannow
 pause
 goto menu
 
+
 :: [DISM]
 :dism
 echo Ejecutando DISM para reparar la imagen de Windows...
 dism /Online /Cleanup-Image /RestoreHealth
 pause
 goto menu
+
 
 :: [SCANVULNERABILITIES]
 :scanvulnerabilities
@@ -139,6 +143,7 @@ powershell -Command "
 pause
 goto menu
 
+
 :: [PROCESS] 
 :procesos
 cls
@@ -149,6 +154,7 @@ echo ===========================================================================
 echo 🔎 Si ves nombres extraños, investígalos en DuckDuckGo.
 pause
 goto menu
+
 
 :: [GETKEY]
 :getkey
@@ -161,6 +167,7 @@ echo La clave de producto de Windows es: %productKey%
 pause
 goto menu
 
+
 :: [CONECTION]
 :conexiones
 cls
@@ -172,6 +179,7 @@ echo 🛑 Si ves una IP desconocida conectada a un puerto extraño, investígala
 pause
 goto menu
 
+
 :: [DISKUSAGE]
 :diskusage
 echo Verificando uso del disco...
@@ -181,6 +189,7 @@ powershell -Command "Get-PSDrive -PSProvider FileSystem | Select-Object Name, @{
 
 pause
 goto menu
+
 
 :: [CLEANTMP]
 :cleantemp
@@ -198,6 +207,7 @@ for /d %%x in ("%temp%\*") do rd /s /q "%%x"
 echo Archivos temporales eliminados.
 pause
 goto menu
+
 
 :: [logintracker]
 :logintracker
@@ -229,6 +239,7 @@ echo Evento(s) registrado(s) exitosamente.
 
 pause
 goto menu
+
 
 :: Función para registrar eventos de seguridad
 :LogSecurityEvents
@@ -393,6 +404,7 @@ if /i "%decision%"=="s" (
 
 pause
 goto menu
+
 
 :: [manual]
 :manual
