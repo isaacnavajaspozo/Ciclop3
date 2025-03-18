@@ -20,14 +20,15 @@ echo 1.  Run Windows Defender      :: Analizar el sistema en busca de actividade
 echo 2.  Run MRT                   :: Eliminar software malicioso de sistemas operativos Windows.
 echo 3.  Run SFC                   :: Escanea y repara archivos que pueden estar dañados o faltantes.
 echo 4.  Run DISM                  :: Mantiene y repara imágenes de Windows.
-echo 5.  Windows Key               :: Obtener clave del sistema.
+echo 5.  Windows Key               :: Obtener clave del sistema, perfecto para obtener claves OEM.
 echo 6.  Suspicious Processes      :: Identificación de procesos sospechosos en el sistema.
 echo 7.  Nwtworking Connect        :: Monitorear conexiones de red activas.
 echo 8.  Disk Usage                :: Evaluar el uso del disco.
 echo 9.  Remove tmp                :: Eliminar archivos temporales.
 echo 10. Login Tracker             :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
-echo 11. Change Networking         :: Cambiar la configuración del tipo de red
-echo 12. Exit                      :: Salir de la aplicación.
+echo 11. Change Networking         :: Cambiar la configuración del tipo de red.
+echo 12. MAS ~ [GitHub]            :: Script para activar claves de Windows (recomendado solo para laboratoríos).
+echo 13. Exit                      :: Salir de la aplicación.
 echo ===================================================================================
 set /p option=Selecciona una opcion (1-12): 
 
@@ -42,14 +43,15 @@ if "%option%"=="8" goto diskusage
 if "%option%"=="9" goto cleantemp
 if "%option%"=="10" goto logintracker
 if "%option%"=="11" goto changenetworking
-if "%option%"=="12" exit
+if "%option%"=="12" goto mas
+if "%option%"=="13" exit
 goto menu
 
 :: [SCAN]
 :scan
-echo 📌 Comprueba:: Seguridad de Windows > Protección antivirus y contra amenazas > Protección en tiempo real > Activado
-echo 📌 Comprueba:: Seguridad de Windows > Control de aplicaciones y navegador > Protección basada en reputación > Activar
-echo 📌 Comprueba:: Seguridad de Windows > Seguridad del dispositivo > Integridad de memoria > Activado
+echo 📌 "Comprueba:: Seguridad de Windows > Protección antivirus y contra amenazas > Protección en tiempo real > Activado"
+echo 📌 "Comprueba:: Seguridad de Windows > Control de aplicaciones y navegador > Protección basada en reputación > Activar"
+echo 📌 "Comprueba:: Seguridad de Windows > Seguridad del dispositivo > Integridad de memoria > Activado"
 echo Iniciando escaneo rápido con Windows Defender...
 start /wait "" "C:\Program Files\Windows Defender\MpCmdRun.exe" -Scan -ScanType 1
 
@@ -357,5 +359,39 @@ if "%option%"=="3" (
 
 echo.
 echo Operacion completada.
+pause
+goto menu
+
+
+:: [mas]
+:mas
+@echo off
+echo ⚠️ Tienes que saber que instalaciones de este tipo que usan KMS para activar Windows son ilegales.
+echo ⚠️ En este script la opción (MAS) es solo para trabajar en entornos de laboratorío controlados.
+echo ⚠️ Instalar claves de Windows de sitios no-oficiales puede descargar y ejecutar contenido malicioso.
+echo 🔔 Consigue una licencia OEM (vinculadas al hardware), suelen ser economicas y seguras.
+echo 🔔 Comprueba antes la opción (5. Windows Key) para conservar tu clave actual.
+echo .
+set /p decision_licencia="🦧 ¿Quieres comprobar la validez de tu licencia? (s/n): "
+if /i "%decision_licencia%"=="s" (
+    echo Comprobando la licencia...
+    powershell -Command "slmgr /dli"
+) else (
+    echo Operación cancelada.
+)
+
+echo .
+echo ⚠️ Microsoft-Activation-Scripts::
+echo 😺 https://github.com/massgravel/Microsoft-Activation-Scripts
+set /p decision="¿Quieres descargar y ejecutar el activador de Windows? (s/n): "
+
+if /i "%decision%"=="s" (
+    echo Descargando y ejecutando el activador...
+    powershell -Command "Invoke-RestMethod https://get.activated.win | Invoke-Expression"
+) else (
+    echo Operación cancelada.
+)
+
+echo Operacion terminada.
 pause
 goto menu
