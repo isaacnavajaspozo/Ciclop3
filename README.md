@@ -7,14 +7,14 @@
                    \/         \/              |__|          \/
                   
 
-## Para ejecutar el script sigue los siguientes pasos:
+## Descargar y ejecutrar script (😁 con emogics):
 
 ✅ Para instalar el script en tu equipo, copia el código de Ciclop3.bat de GitHub, pegalo en un archivo de tu equipo y cambia su extensión por .bat (o .cmd). (Doble clic)
 
 ⚠️ No descargues directamente el archio .bat de GitHub
 
 
-## Otra forma de descargar y ejecutar el script (😭 sin emogics):
+## 2º forma de ejecutar script (😭 sin emogics):
 
 ```powershell
 # Descargar el contenido del script
