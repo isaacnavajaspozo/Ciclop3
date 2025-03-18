@@ -28,11 +28,12 @@ echo 8.  Disk Usage                 :: Evaluar el uso del disco.
 echo 9.  Remove tmp                 :: Eliminar archivos temporales.
 echo 10. Login Tracker              :: Crea un archivo en el escritorio con los últimos 10 eventos de inicio de sesión.
 echo 11. Change Networking          :: Cambiar la configuración del tipo de red.
-echo 12. MAS ~ [GitHub]             :: Script para activar claves de Windows (recomendado solo para laboratoríos).
-echo 13. Manual de recomendaciones  :: Enumera reglas de acción para una ciberseguridad útil en Windows.
-echo 14. Exit                       :: Salir de la aplicación.
+echo 12. Windows Update             :: Comprobar actualizaciones de Windows.
+echo 13. MAS ~ [GitHub]             :: Script para activar claves de Windows (recomendado solo para laboratoríos).
+echo 14. Manual de recomendaciones  :: Enumera reglas de acción para una ciberseguridad útil en Windows.
+echo 15. Exit                       :: Salir de la aplicación.
 echo ===================================================================================
-set /p option=Selecciona una opcion (1-14): 
+set /p option=Selecciona una opcion (1-15): 
 
 if "%option%"=="1" goto scan
 if "%option%"=="2" goto mrtactivity
@@ -45,6 +46,7 @@ if "%option%"=="8" goto diskusage
 if "%option%"=="9" goto cleantemp
 if "%option%"=="10" goto logintracker
 if "%option%"=="11" goto changenetworking
+if "%option%"=="12" goto windowsupdate
 if "%option%"=="12" goto mas
 if "%option%"=="13" goto manual
 if "%option%"=="14" exit
@@ -373,6 +375,26 @@ pause
 goto menu
 
 
+:: [windowsupdate]
+:changenetworking
+@echo off
+echo Verificando actualizaciones de Windows...
+powershell -command "Get-WindowsUpdate"
+if %errorlevel% neq 0 (
+    echo Error detectado. Instalando modulo PSWindowsUpdate...
+    powershell -command "Install-Module PSWindowsUpdate -Force -Scope CurrentUser"
+    echo Instalando actualizaciones...
+    powershell -command "Get-WindowsUpdate -Install -AcceptAll"
+    echo Volviendo a verificar actualizaciones...
+    powershell -command "Get-WindowsUpdate"
+) else (
+    echo Actualización completada correctamente.
+)
+
+pause
+goto menu
+
+
 :: [mas]
 :mas
 @echo off
@@ -441,10 +463,8 @@ echo 🔥 Mejoras para mayor seguridad::
 echo *****************************************
 echo.
 echo [🔐 Windows Defender]:
-echo 📌 "Windows Defender > Activado"
-echo 📌 "aislamiento del núcleo en Seguridad de Windows > Seguridad del dispositivo."
-echo.
-echo [🔐 Windows Defender]:
+echo 📌 "Panel de control > Sistema y seguridad > Firewall de Windows Defender > Cambiar la configuración de notificaciones > Activar"
+echo 📌 "Seguridad del dispositivo > Seguridad del dispositivo > Aislamiento del núcleo > Integridad de memoría > Activado."
 echo 📌 "Seguridad de Windows > Protección antivirus y contra amenazas > Protección en tiempo real > Activado"
 echo 📌 "Seguridad de Windows > Control de aplicaciones y navegador > Protección basada en reputación > Activar"
 echo 📌 "Seguridad de Windows > Seguridad del dispositivo > Integridad de memoria > Activado"
