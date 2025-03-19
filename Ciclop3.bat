@@ -382,10 +382,12 @@ echo Verificando actualizaciones de Windows...
 
 :: Comprobar la versión actual de Windows
 echo.
-for /f "tokens=*" %%a in ('wmic os get version') do set version=%%a
+for /f "tokens=2 delims==" %%a in ('wmic os get version /value') do set version=%%a
 echo Versión actual de Windows: %version%
-
+ver
+echo.
 :: Verificar si hay actualizaciones disponibles
+
 echo Verificando actualizaciones disponibles...
 wmic qfe list brief /format:table
 
@@ -413,7 +415,7 @@ for /f "tokens=*" %%I in ('powershell -command "Get-WmiObject -Class Win32_Quick
 :: Obtener la fecha en formato para mostrar (M/d/yyyy)
 for /f "tokens=*" %%I in ('powershell -command "Get-WmiObject -Class Win32_QuickFixEngineering | Sort-Object InstalledOn -Descending | Select-Object -First 1 InstalledOn | ForEach-Object { $_.InstalledOn.ToString('M/d/yyyy') }"') do set lastInstalledDateDisplay=%%I
 
-echo Fecha de la última actualización instalada: !lastInstalledDateDisplay!
+echo 🐦 Fecha de la última actualización instalada: !lastInstalledDateDisplay!
 
 :: Verificar las actualizaciones posteriores a la fecha de comparación
 wmic /namespace:\\root\cimv2 path Win32_QuickFixEngineering where "InstalledOn > '!lastInstalledDateCompare!'" get HotFixID, InstalledOn > temp_updates.txt
@@ -424,9 +426,9 @@ for /f "skip=1 tokens=*" %%A in (temp_updates.txt) do (
 )
 
 if !updatesAvailable! == true (
-    echo 🚀 Hay actualizaciones programadas para ser instaladas en el futuro.
+    echo 🔥 Hay actualizaciones programadas para ser instaladas en el futuro.
 ) else (
-    echo 🚀 No hay actualizaciones pendientes por instalar.
+    echo 🔥 No hay actualizaciones pendientes por instalar.
 )
 
 del temp_updates.txt
@@ -479,6 +481,7 @@ echo        📂 Manula virtual Ciclop3
 echo =========================================
 echo.
 echo 📑 Recomendaciones para garantizar una óptima seguridad en Windows.
+echo ❤️ Version ~ 1.0.2
 echo.
 echo.
 echo 🔥 Configuración por defecto::
