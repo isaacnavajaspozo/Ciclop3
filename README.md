@@ -7,7 +7,7 @@
                    \/         \/              |__|          \/
                   
 
-## Descargar y ejecutrar script (😁 con emogics):
+## 1º forma de ejecutar script (😁 con emogics):
 
 ✅ Para instalar el script en tu equipo, copia el código de Ciclop3.bat de GitHub, pegalo en un archivo de tu equipo y cambia su extensión por .bat (o .cmd). (Doble clic)
 
@@ -21,7 +21,7 @@
 git clone https://github.com/isaacnavajaspozo/Ciclop3
 ```
 
-## 2º forma de ejecutar script (😭 sin emogics):
+## 3º forma de ejecutar script (😭 sin emogics):
 
 ```powershell
 # Descargar el contenido del script
