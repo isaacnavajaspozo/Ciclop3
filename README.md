@@ -11,8 +11,15 @@
 
 ✅ Para instalar el script en tu equipo, copia el código de Ciclop3.bat de GitHub, pegalo en un archivo de tu equipo y cambia su extensión por .bat (o .cmd). (Doble clic)
 
-⚠️ No descargues directamente el archio .bat de GitHub
+⚠️ No descargues directamente el proyecto como .zip desde GitHub
 
+
+## 2º forma de ejecutar script (😁 con emogics):
+
+```powershell
+# Download Ciclop3
+git clone https://github.com/isaacnavajaspozo/Ciclop3
+```
 
 ## 2º forma de ejecutar script (😭 sin emogics):
 
@@ -30,4 +37,4 @@ $scriptContent | Out-File -FilePath $scriptPath -Encoding ASCII
 
 # Ejecutar el archivo por lotes
 Start-Process -FilePath $scriptPath
-
+```
